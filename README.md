@@ -44,23 +44,19 @@ int main() {
 
     // Print the list
     for (int i = 0; i < int_list.size; i++) {
-        printf("Int list element: %d
-", get_int(&int_list, i));
+        printf("Int list element: %d", get_int(&int_list, i));
     }
 
-    printf("List capacity: %d
-", int_list.capacity);
+    printf("List capacity: %d", int_list.capacity);
 
     remove_int(&int_list, 4);  // Removes the last element
 
     // Print the updated list
     for (int i = 0; i < int_list.size; i++) {
-        printf("Int list element: %d
-", get_int(&int_list, i));
+        printf("Int list element: %d", get_int(&int_list, i));
     }
 
-    printf("Updated list capacity: %d
-", int_list.capacity);
+    printf("Updated list capacity: %d", int_list.capacity);
 
     free_int_list(&int_list);  // Don't forget to free the memory!
     return 0;
