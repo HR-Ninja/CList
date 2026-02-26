@@ -32,9 +32,10 @@ Adding/Removing Elements:
 
 ```c
 // LIST_GET() returns a pointer
-int value = *LIST_GET(int, &list, 0);
+int value = *LIST_GET(&list, int, 0);
 
-list_remove(&list, 0);
+// LIST_REMOVE
+LIST_REMOVE(&list, 0);
 ```
 
 ### Example Usage
@@ -45,31 +46,32 @@ Here's a quick example of using the dynamic list with integers:
 #include "list.h"
 
 int main() {
+    
 
     List list = LIST(int, 20);
 
-    int value = 1;
+    int value = 0;
     for (int i = 0; i < 6; i++) {
-        list_push(&list, &value);
         value++;
+        LIST_PUSH(&list, int, &value);
     }
 
-    // Print list
     for (int i = 0; i < list.size; i++) {
-        printf("Int list element: %d\n", *LIST_GET(int, &list, i));
+        printf("Int list elements: %d\n", *LIST_GET(&list, int, i));
     }
 
-    printf("List capacity: %zu\n", list.capacity);
+    printf("Int list capacity: %d\n", (int)list.capacity);
 
-    // Remove element at index 4
-    list_remove(&list, 4);
+    LIST_REMOVE(&list, 4);
 
-    printf("After removal:\n");
     for (int i = 0; i < list.size; i++) {
-        printf("Int list element: %d\n", *LIST_GET(int, &list, i));
+        printf("Int list elements: %d\n", *LIST_GET(&list, int, i));
     }
 
-    list_free(&list);
+    printf("Int list capacity: %d\n", (int)list.capacity);
+
+    LIST_FREE(&list);
+
     return 0;
 }
 ```
@@ -77,20 +79,21 @@ int main() {
 ### Output
 
 ```
-Int list element: 1
-Int list element: 2
-Int list element: 3
-Int list element: 4
-Int list element: 5
-Int list element: 6
-List capacity: 20
+Int list elements: 1
+Int list elements: 2
+Int list elements: 3
+Int list elements: 4
+Int list elements: 5
+Int list elements: 6
+Int list capacity: 20
 
 After removal:
-Int list element: 1
-Int list element: 2
-Int list element: 3
-Int list element: 4
-Int list element: 6
+Int list elements: 1
+Int list elements: 2
+Int list elements: 3
+Int list elements: 4
+Int list elements: 6
+Int list capacity: 20
 ```
 
 ### Notes
