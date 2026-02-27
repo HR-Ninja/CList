@@ -25,6 +25,9 @@ int main() {
 
     printf("Int list capacity: %d\n", (int)list.capacity);
 
+    printf("Out of bounds example.");
+    int x = *LIST_GET(&list, int, 21);
+
     LIST_FREE(&list);
 
     return 0;

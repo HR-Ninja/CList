@@ -19,6 +19,7 @@ typedef struct {
 } List;
 
 extern List create_list(const size_t element_size, const size_t capacity);
+extern int list_grow(List* l);
 extern int list_push(List* l, const size_t element_size, const void* data);
 extern int list_remove(List* l, const size_t index);
 extern void* list_get(List* l, const size_t index);
